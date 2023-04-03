@@ -5,13 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SnakeGame"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="sNAKE" Height="500" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="29*"/>
-            <RowDefinition Height="136*"/>
-            <RowDefinition Height="39*"/>
-        </Grid.RowDefinitions>
+        <Canvas x:Name="GameWorld"/>
 
     </Grid>
 </Window>

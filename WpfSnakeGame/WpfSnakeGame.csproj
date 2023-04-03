@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B82908E4-F4AA-44D6-ABC4-26DA984A87F4}</ProjectGuid>
+    <ProjectGuid>{88343ACD-BEA8-4FCC-A443-F57EA181655F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SnakeGame</RootNamespace>
-    <AssemblyName>SnakeGame</AssemblyName>
+    <RootNamespace>WpfSnakeGame</RootNamespace>
+    <AssemblyName>WpfSnakeGame</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -53,9 +53,7 @@
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SnakeElement.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
