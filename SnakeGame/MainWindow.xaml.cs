@@ -21,19 +21,41 @@ namespace SnakeGame
     {
         int _elementSize = 20;
         DispatcherTimer _gameLoopTimer;
+        List<SnakeElement> _snakeElements;
+        private int _numberOfColumns;
+        private int _numberOfRows;
         
         public MainWindow()
         {
             InitializeComponent();
-            InitializeTimer();
+            //InitializeTimer();
             DrawGameWorld();
+            InitializeSnake();
+            DrawSnake();
+        }
+
+        private void DrawSnake() {
+            foreach (var snakeElement in _snakeElements) {
+                if (!GameWorld.Children.Contains(snakeElement.UIElement)) 
+                    GameWorld.Children.Add(snakeElement.UIElement);
+                Canvas.SetLeft(snakeElement.UIElement, snakeElement.Y);
+                Canvas.SetTop(snakeElement.UIElement, snakeElement.X);
+            }
+        }
+
+        private void InitializeSnake() {
+            _snakeElements = new List<SnakeElement>();
+            _snakeElements.Add(new SnakeElement(_elementSize){
+                X = (_numberOfRows / 2) * _elementSize,
+                Y = (_numberOfColumns / 2) * _elementSize
+            });
         }
 
         private void DrawGameWorld() {
-            var numberOfColums = this.Width / _elementSize;
-            var numberOfRows = this.Height / _elementSize;
+            _numberOfColumns = (int) this.Width / _elementSize;
+            _numberOfRows = (int) this.Height / _elementSize;
 
-            for (int i = 0; i < numberOfRows; i++) {
+            for (int i = 0; i < _numberOfRows; i++) {
                 Line line = new Line();
                 line.Stroke = Brushes.Black;
                 line.X1 = 0;
@@ -42,7 +64,7 @@ namespace SnakeGame
                 line.Y2 = i * _elementSize;
                 GameWorld.Children.Add(line);
             }
-            for (int i = 0; i < numberOfColums; i++) {
+            for (int i = 0; i < _numberOfColumns; i++) {
                 Line line = new Line();
                 line.Stroke = Brushes.Black;
                 line.X1 = i * _elementSize;
@@ -54,12 +76,12 @@ namespace SnakeGame
 
         }
 
-        public void InitializeTimer() {
-            _gameLoopTimer = new DispatcherTimer();
-            _gameLoopTimer.Interval = TimeSpan.FromSeconds(0.5);
-            //_gameLoopTimer.Tick += MainGameLoop();
-            _gameLoopTimer.Start();
-        }
+        //public void InitializeTimer() {
+        //    _gameLoopTimer = new DispatcherTimer();
+        //    _gameLoopTimer.Interval = TimeSpan.FromSeconds(0.5);
+        //    _gameLoopTimer.Tick += MainGameLoop();
+        //    _gameLoopTimer.Start();
+        //}
 
       
     }
