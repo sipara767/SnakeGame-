@@ -11,9 +11,15 @@
     <Window.DataContext>
         <localVM:MainViewModel/>
     </Window.DataContext>
-    <Grid x:Name="Map" Focusable="True" KeyDown="KeyIsDown" KeyUp="KeyIsUp">
-        <Rectangle  HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Width="70" Fill="Black" Height="72" Margin="326,128,0,0" />
-        <Button Command="{Binding MoveRight}" Margin="326,294,326,76"/>
+ 
+    <Grid >
+        <Rectangle x:Name="SnakeObject" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Width="70" Fill="Black" Height="72" Margin="{Binding Snake.Coordinates}"  />
 
     </Grid>
+<Window.InputBindings>
+    <KeyBinding Key="Up" Command="{Binding IMoveUp}"/>
+    <KeyBinding Key="Right" Command="{Binding IMoveRight}"/>
+    <KeyBinding Key="Left" Command="{Binding IMoveLeft}"/>
+    <KeyBinding Key="Down" Command="{Binding IMoveDown}"/>
+</Window.InputBindings>
 </Window>

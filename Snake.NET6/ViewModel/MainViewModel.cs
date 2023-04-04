@@ -9,6 +9,8 @@ using Microsoft.Toolkit.Mvvm.ComponentModel;
 using System.Windows.Input;
 using System.Windows.Threading;
 using System.Windows;
+using System.Data;
+using Snake.NET6.View;
 
 namespace Snake.NET6.ViewModel {
     internal class MainViewModel : ObservableObject {
@@ -21,34 +23,41 @@ namespace Snake.NET6.ViewModel {
             set { SetProperty(ref snake, value); }
         }
 
-        public ICommand MoveUp { get; }
-        public ICommand MoveRight { get; }
-        public ICommand MoveDown { get; }
-        public ICommand MoveLeft { get; }
+        public ICommand IMoveUp { get; }
+        public ICommand IMoveRight { get; }
+        public ICommand IMoveDown { get; }
+        public ICommand IMoveLeft { get; }
+        
 
 
         public MainViewModel() {
             snake = new Model.SnakeElement();
-            MoveUp = new RelayCommand(SnakeMoveUp);
-            MoveRight = new RelayCommand(SnakeMoveRight);
-            MoveDown = new RelayCommand(SnakeMoveDown);
-            MoveLeft = new RelayCommand(SnakeMoveLeft);
+            IMoveUp = new RelayCommand(MoveUp);
+            IMoveRight = new RelayCommand(MoveRight);
+            IMoveDown = new RelayCommand(MoveDown);
+            IMoveLeft = new RelayCommand(MoveLeft);
+            LaunchSettings();
+
         }
-        private void SnakeMoveUp() {
+        private void LaunchSettings() {
+            Snake.Coordinates = new Thickness(Snake.X, Snake.Y, 0, 0);
+        }
+        private void MoveUp() {
+            
+        }
+        private void MoveRight() {
+
+            snake.Coordinates = new Thickness(Snake.X += 50, Snake.Y, 0, 0);
+        }
+        private void MoveDown() {
             Snake.Y += 1;
+            
+        }
+        private void MoveLeft() {
+            Snake.Y += 1;
+            
         }
 
-        private void SnakeMoveRight() {
-            Snake.X += 1;
-        }
-
-        private void SnakeMoveDown() {
-            Snake.Y -= 1;
-        }
-
-        private void SnakeMoveLeft() {
-            Snake.Y -= 1;
-        }
 
     }
 }
