@@ -7,10 +7,13 @@ using Microsoft.Windows.Input;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace Snake.NET6.ViewModel {
     internal class MainViewModel : ObservableObject {
         private Model.SnakeElement snake;
+        DispatcherTimer gameTimer = new DispatcherTimer();
+        int speed = 5;
 
         public Model.SnakeElement Snake {
             get { return snake; }

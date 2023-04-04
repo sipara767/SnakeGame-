@@ -22,6 +22,8 @@ namespace Snake.NET6.View  {
             InitializeComponent();
         }
 
+        private void KeyIsDown(object sender, KeyEventArgs e) {
 
+        }
     }
 }

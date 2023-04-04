@@ -11,8 +11,9 @@
     <Window.DataContext>
         <localVM:MainViewModel/>
     </Window.DataContext>
-    <Grid>
-        <Rectangle HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="70" Fill="Black" Height="72"/>
+    <Grid x:Name="Map" Focusable="True" KeyDown="KeyIsDown" KeyUp="KeyIsUp">
+        <Rectangle  HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Width="70" Fill="Black" Height="72" Margin="424,167,0,0"/>
+        <Button Command="{Binding MoveRight}" Margin="326,294,326,76"/>
 
     </Grid>
 </Window>
