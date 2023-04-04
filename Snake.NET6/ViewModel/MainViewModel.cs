@@ -8,6 +8,7 @@ using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using System.Windows.Input;
 using System.Windows.Threading;
+using System.Windows;
 
 namespace Snake.NET6.ViewModel {
     internal class MainViewModel : ObservableObject {

@@ -12,7 +12,7 @@
         <localVM:MainViewModel/>
     </Window.DataContext>
     <Grid x:Name="Map" Focusable="True" KeyDown="KeyIsDown" KeyUp="KeyIsUp">
-        <Rectangle  HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Width="70" Fill="Black" Height="72" Margin="424,167,0,0"/>
+        <Rectangle  HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Width="70" Fill="Black" Height="72" Margin="326,128,0,0" />
         <Button Command="{Binding MoveRight}" Margin="326,294,326,76"/>
 
     </Grid>
