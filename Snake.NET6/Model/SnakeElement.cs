@@ -9,8 +9,26 @@ using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 namespace Snake.NET6.Model {
     internal class SnakeElement : ObservableObject {
-        
-        private int x = 10;
+
+        private string direction;
+
+        public string Direction {
+            get { return direction; }
+            set { direction = value; }
+        }
+
+
+        private 
+
+        private int score;
+
+        public int Score {
+            get { return score; }
+            set { score = value; }
+        }
+
+
+        private int x = 381;
 
         public int X {
             get { return x; }
@@ -18,7 +36,7 @@ namespace Snake.NET6.Model {
         }
 
 
-        private int y = 10;
+        private int y = 172;
 
         public int Y {
             get { return y; }

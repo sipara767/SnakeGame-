@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Snake.NET6.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,6 @@ namespace Snake.NET6.View  {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-        }
-
-        private void KeyIsDown(object sender, KeyEventArgs e) {
-
         }
     }
 }

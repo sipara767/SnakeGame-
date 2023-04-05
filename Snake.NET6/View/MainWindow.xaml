@@ -18,9 +18,8 @@
         <KeyBinding Key="Left" Command="{Binding IMoveLeft}"/>
         <KeyBinding Key="Down" Command="{Binding IMoveDown}"/>
     </Window.InputBindings>
-    
-    <Grid>
-        <Rectangle x:Name="SnakeObject" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Width="70" Fill="Black" Height="72" Margin="{Binding Snake.Coordinates}"  />
 
-    </Grid>
+    <Canvas>
+        <Rectangle x:Name="SnakeObject" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Width="10" Fill="Black" Height="10" Margin="{Binding Snake.Coordinates}" />
+    </Canvas>
 </Window>

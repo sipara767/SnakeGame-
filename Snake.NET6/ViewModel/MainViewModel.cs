@@ -14,20 +14,22 @@ using Snake.NET6.View;
 
 namespace Snake.NET6.ViewModel {
     internal class MainViewModel : ObservableObject {
-        private Model.SnakeElement snake;
         DispatcherTimer gameTimer = new DispatcherTimer();
-        int speed = 5;
+        
+        private Model.SnakeElement snake;
 
         public Model.SnakeElement Snake {
             get { return snake; }
-            set { SetProperty(ref snake, value); }
+            set { snake = value; }
         }
 
         public ICommand IMoveUp { get; }
         public ICommand IMoveRight { get; }
         public ICommand IMoveDown { get; }
         public ICommand IMoveLeft { get; }
-        
+
+
+        private System.Windows.Threading.DispatcherTimer gameTickTimer = new System.Windows.Threading.DispatcherTimer();
 
 
         public MainViewModel() {
@@ -37,25 +39,38 @@ namespace Snake.NET6.ViewModel {
             IMoveDown = new RelayCommand(MoveDown);
             IMoveLeft = new RelayCommand(MoveLeft);
             LaunchSettings();
-
+            gameTickTimer.Tick += GameTickTimer_Tick;
         }
+
+        private void GameTickTimer_Tick(object? sender, EventArgs e) {
+            if (snake.Direction == "up") {
+
+            }
+            else if (snake.Direction == "right") {
+
+            }
+            else if (snake.Direction == "down") {
+
+            }
+            else if (snake.Direction == "left") {
+
+            }
+        }
+
         private void LaunchSettings() {
-            Snake.Coordinates = new Thickness(Snake.X, Snake.Y, 0, 0);
+            snake.Coordinates = new Thickness(Snake.X, Snake.Y, 0, 0);
         }
         private void MoveUp() {
-            
+            snake.Direction = "up";
         }
         private void MoveRight() {
-
-            snake.Coordinates = new Thickness(Snake.X += 50, Snake.Y, 0, 0);
+            snake.Direction = "right";
         }
         private void MoveDown() {
-            Snake.Y += 1;
-            
+            snake.Direction = "down";
         }
         private void MoveLeft() {
-            Snake.Y += 1;
-            
+            snake.Direction = "left";
         }
 
 
