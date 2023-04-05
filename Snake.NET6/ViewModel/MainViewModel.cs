@@ -11,11 +11,14 @@ using System.Windows.Threading;
 using System.Windows;
 using System.Data;
 using Snake.NET6.View;
+using System.ComponentModel;
+using System.Threading;
+using Snake.NET6.Model;
 
 namespace Snake.NET6.ViewModel {
-    internal class MainViewModel : ObservableObject {
+    internal class MainViewModel : INotifyPropertyChanged {
         DispatcherTimer gameTimer = new DispatcherTimer();
-        
+
         private Model.SnakeElement snake;
 
         public Model.SnakeElement Snake {
@@ -23,56 +26,54 @@ namespace Snake.NET6.ViewModel {
             set { snake = value; }
         }
 
-        public ICommand IMoveUp { get; }
-        public ICommand IMoveRight { get; }
-        public ICommand IMoveDown { get; }
-        public ICommand IMoveLeft { get; }
+        public ICommand MoveUp { get; set; }
+        public ICommand MoveRight { get; set; }
+        public ICommand MoveDown { get; set; }
+        public ICommand MoveLeft { get; set; }
 
+        public Point Position { get => position; set { position = value; NotifyPropertyChanged(nameof(Position)); } }
+
+        private Point position;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private System.Windows.Threading.DispatcherTimer gameTickTimer = new System.Windows.Threading.DispatcherTimer();
+
+        protected void NotifyPropertyChanged(String info) {
+            if (PropertyChanged != null) {
+                PropertyChanged(this, new PropertyChangedEventArgs(info));
+            }
+        }
 
 
         public MainViewModel() {
             snake = new Model.SnakeElement();
-            IMoveUp = new RelayCommand(MoveUp);
-            IMoveRight = new RelayCommand(MoveRight);
-            IMoveDown = new RelayCommand(MoveDown);
-            IMoveLeft = new RelayCommand(MoveLeft);
             LaunchSettings();
-            gameTickTimer.Tick += GameTickTimer_Tick;
-        }
 
-        private void GameTickTimer_Tick(object? sender, EventArgs e) {
-            if (snake.Direction == "up") {
+            Position = new Point(100, 100);
+          
+            MoveUp = new MvvmCross.Commands.MvxCommand(() => { Position = new Point(position.X, position.Y + 10); });
+            MoveRight = new MvvmCross.Commands.MvxCommand(() => { Position = new Point(position.X + 10, position.Y); });
+            MoveDown = new MvvmCross.Commands.MvxCommand(() => { Position = new Point(position.X, position.Y - 10); });
+            MoveLeft = new MvvmCross.Commands.MvxCommand(() => { Position = new Point(position.X - 10, position.Y); });
 
-            }
-            else if (snake.Direction == "right") {
 
-            }
-            else if (snake.Direction == "down") {
-
-            }
-            else if (snake.Direction == "left") {
-
-            }
+            
         }
 
         private void LaunchSettings() {
-            snake.Coordinates = new Thickness(Snake.X, Snake.Y, 0, 0);
-        }
-        private void MoveUp() {
-            snake.Direction = "up";
-        }
-        private void MoveRight() {
-            snake.Direction = "right";
-        }
-        private void MoveDown() {
-            snake.Direction = "down";
-        }
-        private void MoveLeft() {
-            snake.Direction = "left";
-        }
+           
 
 
+            bool[,] Matrix = new bool[25, 25];
+
+            foreach (var coordinateMatrix in Matrix) {
+                foreach (var coordniateSnake in snake.SnakePos) {
+                    if (coordinateMatrix == coordniateSnake) {
+
+                    }
+                }
+            }
+        }
     }
 }

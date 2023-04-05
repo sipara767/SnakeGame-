@@ -13,13 +13,14 @@
     </Window.DataContext>
 
     <Window.InputBindings>
-        <KeyBinding Key="Up" Command="{Binding IMoveUp}"/>
-        <KeyBinding Key="Right" Command="{Binding IMoveRight}"/>
-        <KeyBinding Key="Left" Command="{Binding IMoveLeft}"/>
-        <KeyBinding Key="Down" Command="{Binding IMoveDown}"/>
+        <KeyBinding Key="Up" Command="{Binding MoveUp}"/>
+        <KeyBinding Key="Right" Command="{Binding MoveRight}"/>
+        <KeyBinding Key="Left" Command="{Binding MoveLeft}"/>
+        <KeyBinding Key="Down" Command="{Binding MoveDown}"/>
     </Window.InputBindings>
 
     <Canvas>
-        <Rectangle x:Name="SnakeObject" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Width="10" Fill="Black" Height="10" Margin="{Binding Snake.Coordinates}" />
+        <Rectangle Canvas.Left="{Binding Snake.X}" Canvas.Bottom="{Binding Snake.Y}" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Width="10" Fill="Black" Height="10" />
+        
     </Canvas>
 </Window>

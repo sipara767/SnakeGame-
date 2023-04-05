@@ -10,6 +10,15 @@ using Microsoft.Toolkit.Mvvm.ComponentModel;
 namespace Snake.NET6.Model {
     internal class SnakeElement : ObservableObject {
 
+        private bool[,] snakePos;
+
+        public bool[,] SnakePos {
+            get { return snakePos; }
+            set { snakePos = value; }
+        }
+
+
+
         private string direction;
 
         public string Direction {
@@ -17,18 +26,7 @@ namespace Snake.NET6.Model {
             set { direction = value; }
         }
 
-
-        private 
-
-        private int score;
-
-        public int Score {
-            get { return score; }
-            set { score = value; }
-        }
-
-
-        private int x = 381;
+        private int x = 0;
 
         public int X {
             get { return x; }
@@ -36,17 +34,14 @@ namespace Snake.NET6.Model {
         }
 
 
-        private int y = 172;
+        private int y = 12;
 
         public int Y {
             get { return y; }
             set { SetProperty(ref y, value); }
         }
 
-
-
         private Thickness coordinates;
-        
 
         public Thickness Coordinates {
             get { return coordinates; }
