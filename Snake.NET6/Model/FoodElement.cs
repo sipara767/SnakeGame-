@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace SnakeNet6.Model {
     internal class FoodElement {
-        private int[] position;
-
-        public int[] Position { get => position; set => position = value; }
+        private Model.FoodElement foodElement;
+        public int X { get; set; }
+        public int Y { get; set; }
 
         public void SetFoodPosition() {
             Random rnd = new Random();
-            Position[0] = rnd.Next(25);
-            Position[1] = rnd.Next(25);
+            foodElement.X = rnd.Next(25);
+            foodElement.Y = rnd.Next(25);
         }
     }
 }

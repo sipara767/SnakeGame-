@@ -21,16 +21,17 @@ namespace SnakeNet6.ViewModel {
 
         private Model.SnakeElement snake;
         private Model.FoodElement food;
+        private bool[,] matrix = new bool[25, 25];
 
         public Model.SnakeElement Snake {
             get { return snake; }
             set { snake = value; }
         }
 
-        public ICommand MoveUp { get; set; }
-        public ICommand MoveRight { get; set; }
-        public ICommand MoveDown { get; set; }
-        public ICommand MoveLeft { get; set; }
+        public ICommand MoveUpCommand { get; set; }
+        public ICommand MoveRightCommand { get; set; }
+        public ICommand MoveDownCommand { get; set; }
+        public ICommand MoveLeftCommand { get; set; }
 
         public Point Position { get => position; set { position = value; NotifyPropertyChanged(nameof(Position)); } }
 
@@ -48,45 +49,46 @@ namespace SnakeNet6.ViewModel {
 
 
         public MainViewModel() {
+            var currentDirection = SnakeElement.Directions.Right;
             snake = new Model.SnakeElement();
             food = new Model.FoodElement();
 
             LaunchSettings();
+            snake.SetSnakePosition(snake.X, snake.Y);
+            if (snake.X == food.X && snake.Y == food.Y) {
+                //Snake eats food
+                snake.Score++;
 
-            
-
-
-
-            Position = new Point(100, 100);
-          
-            MoveUp = new MvvmCross.Commands.MvxCommand(() => { Position = new Point(position.X, position.Y + 10); });
-            MoveRight = new MvvmCross.Commands.MvxCommand(() => { Position = new Point(position.X + 10, position.Y); });
-            MoveDown = new MvvmCross.Commands.MvxCommand(() => { Position = new Point(position.X, position.Y - 10); });
-            MoveLeft = new MvvmCross.Commands.MvxCommand(() => { Position = new Point(position.X - 10, position.Y); });
-
-
-            
+            }
+            if (snake.Up) {  MoveUpCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveUp());}
+            if (snake.Up) { MoveRightCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveRight()); }
+            if (snake.Up) { MoveDownCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveDown()); }
+            if (snake.Up) { MoveLeftCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveLeft()); }
+        }
+        public void SetSnakesPosition(int x, int y) {
+            matrix[x, y] = true;
         }
 
         private void LaunchSettings() {
             food.SetFoodPosition();
-            bool[,] matrix = new bool[25, 25];
+
+            //Build matrix
             for (int i = 0; i < 25; i++) {
                 for (int j = 0; j < 25; j++) {
                     matrix[i, j] = false;
                 }
             }
-
-
-            f
+        }
+        private void TrackSnake(int x, int y) {
 
             for (int i = 0; i < 25; i++) {
                 for (int j = 0; j < 25; j++) {
-                    if (matrix[i, j] != snake.Position[i, j]) {
+                    if (matrix[i, j] == true) {
                         //position snake
                     }
                 }
             }
         }
+
     }
 }
