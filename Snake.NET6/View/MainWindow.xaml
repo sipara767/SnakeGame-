@@ -20,7 +20,7 @@
     </Window.InputBindings>
 
     <Canvas>
-        <Rectangle Canvas.Left="{Binding Snake.X}" Canvas.Bottom="{Binding Snake.Y}" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Top" Width="10" Fill="Black" Height="10" />
+        <Rectangle Canvas.Left="{Binding Snake.X}" Canvas.Bottom="{Binding Snake.Y}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="10" Fill="Black" Height="10" />
         
     </Canvas>
 </Window>

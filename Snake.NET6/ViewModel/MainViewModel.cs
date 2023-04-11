@@ -13,13 +13,14 @@ using System.Data;
 using Snake.NET6.View;
 using System.ComponentModel;
 using System.Threading;
-using Snake.NET6.Model;
+using SnakeNet6.Model;
 
-namespace Snake.NET6.ViewModel {
+namespace SnakeNet6.ViewModel {
     internal class MainViewModel : INotifyPropertyChanged {
         DispatcherTimer gameTimer = new DispatcherTimer();
 
         private Model.SnakeElement snake;
+        private Model.FoodElement food;
 
         public Model.SnakeElement Snake {
             get { return snake; }
@@ -48,7 +49,13 @@ namespace Snake.NET6.ViewModel {
 
         public MainViewModel() {
             snake = new Model.SnakeElement();
+            food = new Model.FoodElement();
+
             LaunchSettings();
+
+            
+
+
 
             Position = new Point(100, 100);
           
@@ -62,15 +69,21 @@ namespace Snake.NET6.ViewModel {
         }
 
         private void LaunchSettings() {
-           
+            food.SetFoodPosition();
+            bool[,] matrix = new bool[25, 25];
+            for (int i = 0; i < 25; i++) {
+                for (int j = 0; j < 25; j++) {
+                    matrix[i, j] = false;
+                }
+            }
 
 
-            bool[,] Matrix = new bool[25, 25];
+            f
 
-            foreach (var coordinateMatrix in Matrix) {
-                foreach (var coordniateSnake in snake.SnakePos) {
-                    if (coordinateMatrix == coordniateSnake) {
-
+            for (int i = 0; i < 25; i++) {
+                for (int j = 0; j < 25; j++) {
+                    if (matrix[i, j] != snake.Position[i, j]) {
+                        //position snake
                     }
                 }
             }

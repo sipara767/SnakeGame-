@@ -4,49 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Shapes;
+using System.Xml.Linq;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 
-namespace Snake.NET6.Model {
-    internal class SnakeElement : ObservableObject {
+namespace SnakeNet6.Model {
+    internal class SnakeElement {
+        private Model.SnakeElement snake;
 
-        private bool[,] snakePos;
+        private bool[,] position;
 
-        public bool[,] SnakePos {
-            get { return snakePos; }
-            set { snakePos = value; }
+        public bool[,] Position { get => position; set => position = value; }
+
+        public void SetSnakePosition(int x, int y) {
+            for(int i = 0; i < 25; i++) {
+                for (int j = 0; j < 25; j++) {
+                    if (i != y && j != y) {
+                        snake.Position[i, j] = false;
+                    }
+                    if (i == x && j == y) {
+                        snake.Position[i, j] = true;
+                    }
+
+                }
+            }
         }
-
-
-
-        private string direction;
-
-        public string Direction {
-            get { return direction; }
-            set { direction = value; }
-        }
-
-        private int x = 0;
-
-        public int X {
-            get { return x; }
-            set { SetProperty(ref x, value); }
-        }
-
-
-        private int y = 12;
-
-        public int Y {
-            get { return y; }
-            set { SetProperty(ref y, value); }
-        }
-
-        private Thickness coordinates;
-
-        public Thickness Coordinates {
-            get { return coordinates; }
-            set { coordinates = value; }
-        }
-
     }
 }

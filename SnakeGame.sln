@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakeGame", "SnakeGame\SnakeGame.csproj", "{B82908E4-F4AA-44D6-ABC4-26DA984A87F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sake.NET6", "Snake.NET6\Sake.NET6.csproj", "{C6B7AD52-D662-4C51-AC7B-A51D6B481EA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnakeNet6", "Snake.NET6\SnakeNet6.csproj", "{C6B7AD52-D662-4C51-AC7B-A51D6B481EA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
