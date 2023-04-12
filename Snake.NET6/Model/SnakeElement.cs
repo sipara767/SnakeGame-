@@ -16,10 +16,7 @@ namespace SnakeNet6.Model {
         public int Score { get; set; }
         public bool Alive { get; set; } = true;
 
-        public bool Up { get; set; } = false;
-        public bool Right { get; set; } = true;
-        public bool Down { get; set; } = false;
-        public bool Left { get; set; } = false;
+        public Directions currentDirection { get; set; }
 
         public enum Directions {
             Up, Right, Down, Left
@@ -36,33 +33,16 @@ namespace SnakeNet6.Model {
         }
 
         public void MoveUp() {
-            snake.Move(SnakeElement.Directions.Up);
-            snake.Up = true;
-            snake.Right = false;
-            snake.Down = false;
-            snake.Left = false;
-       
+            snake.currentDirection = Directions.Up;
         }
         public void MoveRight() {
-            snake.Move(SnakeElement.Directions.Right);
-            snake.Up = false;
-            snake.Right = true;
-            snake.Down = false;
-            snake.Left = false;
+            snake.currentDirection = Directions.Right;
         }
         public void MoveDown() {
-            snake.Move(SnakeElement.Directions.Down);
-            snake.Up = false;
-            snake.Right = false;
-            snake.Down = true;
-            snake.Left = false;
+            snake.currentDirection = Directions.Down;
         }
         public void MoveLeft() {
-            snake.Move(SnakeElement.Directions.Left);
-            snake.Up = false;
-            snake.Right = false;
-            snake.Down = false;
-            snake.Left = true;
+            snake.currentDirection=Directions.Left;
         }
 
 
