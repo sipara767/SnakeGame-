@@ -10,7 +10,7 @@ using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 
 namespace SnakeNet6.Model {
-    internal class SnakeElement {
+    public class SnakeElement {
         private Model.SnakeElement snake;
 
         public int Score { get; set; }

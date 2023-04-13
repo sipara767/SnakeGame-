@@ -16,7 +16,7 @@ using System.Threading;
 using SnakeNet6.Model;
 
 namespace SnakeNet6.ViewModel {
-    internal class MainViewModel : INotifyPropertyChanged {
+    public class MainViewModel : INotifyPropertyChanged {
         DispatcherTimer gameTimer = new DispatcherTimer();
 
         private Model.SnakeElement snake;
@@ -65,6 +65,9 @@ namespace SnakeNet6.ViewModel {
                 if (snake.X == food.X && snake.Y == food.Y) {
                     //Snake eats food
                     snake.Score++;
+                }
+                if (true) {
+
                 }
                 snake.Move(snake.currentDirection);
                 snake.SetSnakePosition(snake.X, snake.Y);

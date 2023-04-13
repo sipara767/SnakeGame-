@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace SnakeNet6.Model {
-    internal class FoodElement {
+    public class FoodElement {
         private Model.FoodElement foodElement;
         public int X { get; set; }
         public int Y { get; set; }
