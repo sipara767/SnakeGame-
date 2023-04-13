@@ -61,9 +61,9 @@ namespace SnakeNet6.ViewModel {
 
             }
             if (snake.Up) {  MoveUpCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveUp());}
-            if (snake.Up) { MoveRightCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveRight()); }
-            if (snake.Up) { MoveDownCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveDown()); }
-            if (snake.Up) { MoveLeftCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveLeft()); }
+            if (snake.Right) { MoveRightCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveRight()); }
+            if (snake.Down) { MoveDownCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveDown()); }
+            if (snake.Left) { MoveLeftCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveLeft()); }
         }
         public void SetSnakesPosition(int x, int y) {
             matrix[x, y] = true;
