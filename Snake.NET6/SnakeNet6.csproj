@@ -13,4 +13,10 @@
     <PackageReference Include="MvvmCross" Version="9.0.9" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Environment\EnvironmentElement.csproj" />
+    <ProjectReference Include="..\FoodElement\FoodElement.csproj" />
+    <ProjectReference Include="..\SnakeElement\SnakeElement.csproj" />
+  </ItemGroup>
+
 </Project>

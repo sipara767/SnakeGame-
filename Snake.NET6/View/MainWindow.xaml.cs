@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SnakeNet6.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace Snake.NET6.View  {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+            this.Content = new MainViewModel();
         }
     }
 }

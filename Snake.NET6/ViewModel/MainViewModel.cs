@@ -13,20 +13,17 @@ using System.Data;
 using Snake.NET6.View;
 using System.ComponentModel;
 using System.Threading;
-using SnakeNet6.Model;
+using SnakeElement;
+using FoodElement;
+using Environment;
 
 namespace SnakeNet6.ViewModel {
     public class MainViewModel : INotifyPropertyChanged {
         DispatcherTimer gameTimer = new DispatcherTimer();
 
-        private Model.SnakeElement snake;
-        private Model.FoodElement food;
+        private SnakeClass snake;
+        private FoodClass food;
         private bool[,] matrix = new bool[25, 25];
-
-        public Model.SnakeElement Snake {
-            get { return snake; }
-            set { snake = value; }
-        }
 
         public ICommand MoveUpCommand { get; set; }
         public ICommand MoveRightCommand { get; set; }
@@ -49,57 +46,24 @@ namespace SnakeNet6.ViewModel {
 
 
         public MainViewModel() {
-            var currentDirection = SnakeElement.Directions.Right;
-            snake = new Model.SnakeElement();
-            food = new Model.FoodElement();
-            LaunchSettings();
-            gameTickTimer.Start();
-
+            snake = new SnakeClass();
+            food = new FoodClass();
+            evm = new EnvironmentClass();
              
-            MoveUpCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveUp());
-            MoveRightCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveRight());
-            MoveDownCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveDown());
-            MoveLeftCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveLeft());
+            MoveUpCommand = new MvvmCross.Commands.MvxCommand(() => snake.SetDirectionUp());
+            MoveRightCommand = new MvvmCross.Commands.MvxCommand(() => snake.SetDirectionRight());
+            MoveDownCommand = new MvvmCross.Commands.MvxCommand(() => snake.SetDirectionDown());
+            MoveLeftCommand = new MvvmCross.Commands.MvxCommand(() => snake.SetDirectionLeft());
 
-            while (snake.Alive) {
+            while (snake.IsAlive) {
+                snake.IsSnakeInsideBound();
                 if (snake.X == food.X && snake.Y == food.Y) {
-                    //Snake eats food
                     snake.Score++;
                 }
-                if (true) {
+                snake.IncreaseOrDecreaseXYValues(snake.CurrentDirection);
 
-                }
-                snake.Move(snake.currentDirection);
-                snake.SetSnakePosition(snake.X, snake.Y);
                 Thread.Sleep(300);
             }
-            gameTickTimer.Stop();
-
         }
-        public void SetSnakesPosition(int x, int y) {
-            matrix[x, y] = true;
-        }
-
-        private void LaunchSettings() {
-            food.SetFoodPosition();
-
-            //Build matrix
-            for (int i = 0; i < 25; i++) {
-                for (int j = 0; j < 25; j++) {
-                    matrix[i, j] = false;
-                }
-            }
-        }
-        private void TrackSnake(int x, int y) {
-
-            for (int i = 0; i < 25; i++) {
-                for (int j = 0; j < 25; j++) {
-                    if (matrix[i, j] == true) {
-                        //position snake
-                    }
-                }
-            }
-        }
-
     }
 }
