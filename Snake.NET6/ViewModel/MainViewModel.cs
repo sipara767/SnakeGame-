@@ -52,18 +52,26 @@ namespace SnakeNet6.ViewModel {
             var currentDirection = SnakeElement.Directions.Right;
             snake = new Model.SnakeElement();
             food = new Model.FoodElement();
-
             LaunchSettings();
-            snake.SetSnakePosition(snake.X, snake.Y);
-            if (snake.X == food.X && snake.Y == food.Y) {
-                //Snake eats food
-                snake.Score++;
+            gameTickTimer.Start();
 
+             
+            MoveUpCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveUp());
+            MoveRightCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveRight());
+            MoveDownCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveDown());
+            MoveLeftCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveLeft());
+
+            while (snake.Alive) {
+                if (snake.X == food.X && snake.Y == food.Y) {
+                    //Snake eats food
+                    snake.Score++;
+                }
+                snake.Move(snake.currentDirection);
+                snake.SetSnakePosition(snake.X, snake.Y);
+                Thread.Sleep(300);
             }
-            if (snake.Up) {  MoveUpCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveUp());}
-            if (snake.Right) { MoveRightCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveRight()); }
-            if (snake.Down) { MoveDownCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveDown()); }
-            if (snake.Left) { MoveLeftCommand = new MvvmCross.Commands.MvxCommand(() => snake.MoveLeft()); }
+            gameTickTimer.Stop();
+
         }
         public void SetSnakesPosition(int x, int y) {
             matrix[x, y] = true;
