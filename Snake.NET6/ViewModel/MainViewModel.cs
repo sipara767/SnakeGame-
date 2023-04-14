@@ -20,31 +20,22 @@ using Environment;
 namespace SnakeNet6.ViewModel {
     public class MainViewModel : INotifyPropertyChanged {
         DispatcherTimer gameTimer = new DispatcherTimer();
-
         private SnakeClass snake;
         private FoodClass food;
-        private bool[,] matrix = new bool[25, 25];
+        private EnvironmentClass evm;
 
         public ICommand MoveUpCommand { get; set; }
         public ICommand MoveRightCommand { get; set; }
         public ICommand MoveDownCommand { get; set; }
         public ICommand MoveLeftCommand { get; set; }
 
-        public Point Position { get => position; set { position = value; NotifyPropertyChanged(nameof(Position)); } }
-
-        private Point position;
-
         public event PropertyChangedEventHandler? PropertyChanged;
-
-        private System.Windows.Threading.DispatcherTimer gameTickTimer = new System.Windows.Threading.DispatcherTimer();
 
         protected void NotifyPropertyChanged(String info) {
             if (PropertyChanged != null) {
                 PropertyChanged(this, new PropertyChangedEventArgs(info));
             }
         }
-
-
         public MainViewModel() {
             snake = new SnakeClass();
             food = new FoodClass();
@@ -55,15 +46,23 @@ namespace SnakeNet6.ViewModel {
             MoveDownCommand = new MvvmCross.Commands.MvxCommand(() => snake.SetDirectionDown());
             MoveLeftCommand = new MvvmCross.Commands.MvxCommand(() => snake.SetDirectionLeft());
 
+            snake.SetDirectionRight();
+            snake.X = 1;
+            snake.Y = 12;
+
             while (snake.IsAlive) {
                 snake.IsSnakeInsideBound();
                 if (snake.X == food.X && snake.Y == food.Y) {
                     snake.Score++;
+                    food.SetFood(snake);
                 }
                 snake.IncreaseOrDecreaseXYValues(snake.CurrentDirection);
+                evm.ResetEnvironmentMatrixToFalse();
+                evm.PlaceSnakeInEnvironment(snake);
 
                 Thread.Sleep(300);
             }
+
         }
     }
 }

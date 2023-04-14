@@ -16,4 +16,11 @@
     <PackageReference Include="coverlet.collector" Version="3.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Environment\EnvironmentElement.csproj" />
+    <ProjectReference Include="..\FoodElement\FoodElement.csproj" />
+    <ProjectReference Include="..\Snake.NET6\SnakeNet6.csproj" />
+    <ProjectReference Include="..\SnakeElement\SnakeElement.csproj" />
+  </ItemGroup>
+
 </Project>

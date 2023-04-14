@@ -31,5 +31,9 @@ namespace SnakeElement {
         public void SetDirectionLeft() {
             snake.CurrentDirection= Directions.Left;
         }
+        public void IsSnakeInsideBound() {
+            if (snake.X < 26 || snake.Y < 26) ;
+            else snake.IsAlive = false;
+        }
     }
 }

@@ -1,11 +1,17 @@
-namespace UnitTests {
+
+
+using SnakeElement;
+
+namespace UnitTest {
     public class Tests {
         [SetUp]
         public void Setup() {
         }
 
         [Test]
-        public void Test1() {
+        public void SnakeIsMoving() {
+            var snake = new SnakeClass();
+
             Assert.Pass();
         }
     }

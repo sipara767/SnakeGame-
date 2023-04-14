@@ -12,7 +12,7 @@ namespace FoodElement {
             do {
                 newX = rnd.Next(25);
                 newY = rnd.Next(25);
-            } while (newX == snakeX && newY == snakeY);
+            } while (newX == snake.X && newY == snake.Y);
         }
     }
 }
