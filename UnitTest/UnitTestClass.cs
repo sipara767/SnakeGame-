@@ -1,7 +1,4 @@
 
-
-using SnakeElement;
-
 namespace UnitTest {
     public class Tests {
         [SetUp]
@@ -10,8 +7,8 @@ namespace UnitTest {
 
         [Test]
         public void SnakeIsMoving() {
-            var snake = new SnakeClass();
-
+            
+            SnakeElement snake 
             Assert.Pass();
         }
     }
