@@ -13,11 +13,11 @@ namespace SnakeElement {
             Up, Down, Left, Right
         }
         public Directions CurrentDirection { get; set; }
-        public void IncreaseOrDecreaseXYValues(Directions direction) {
-            if (direction == Directions.Up) snake.Y++;
-            if (direction == Directions.Right) snake.X++;
-            if (direction == Directions.Down) snake.Y--;
-            if (direction == Directions.Left) snake.X--;
+        public void IncreaseOrDecreaseXYValues(SnakeClass snake) {
+            if (snake.CurrentDirection == Directions.Up) snake.Y++;
+            if (snake.CurrentDirection == Directions.Right) snake.X++;
+            if (snake.CurrentDirection == Directions.Down) snake.Y--;
+            if (snake.CurrentDirection == Directions.Left) snake.X--;
         }
         public void SetDirectionUp() {
             snake.CurrentDirection= Directions.Up;
