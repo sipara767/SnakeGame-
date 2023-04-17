@@ -35,5 +35,8 @@ namespace SnakeElement {
             if (snake.X < 26 || snake.Y < 26) return true;
             else return false;
         }
+        public void MakeSnakeGreater() {
+
+        }
     }
 }
