@@ -1,4 +1,4 @@
-
+using FoodElement;
 using SnakeElement;
 
 namespace UnitTest {
@@ -13,14 +13,12 @@ namespace UnitTest {
             snake.X= 1;
             snake.Y= 2;
             snake.IncreaseOrDecreaseXYValues(snake);
-            if (snake.X != 1 && snake.Y == 2) {
-                Assert.Pass();
-            }
+            if (snake.X != 1 && snake.Y == 2) { Assert.Pass(); }
         }
 
         [Test]
         public void SnakeAteFood() {
-            FoodElement food = new FoodElement();
+            FoodClass food = new FoodClass();
             food.X = 2;
             food.Y = 2;
             SnakeClass snake = new SnakeClass();
@@ -28,7 +26,7 @@ namespace UnitTest {
             snake.Y = 2;
             snake.CurrentDirection = SnakeClass.Directions.Right;
             snake.IncreaseOrDecreaseXYValues(snake);
-
+            if (snake.Score == 1) { Assert.Pass();}
         }
     }
 }

@@ -59,10 +59,11 @@ namespace SnakeNet6.ViewModel {
                 snake.IncreaseOrDecreaseXYValues(snake);
                 evm.ResetEnvironmentMatrixToFalse();
                 evm.PlaceSnakeInEnvironment(snake);
+                snake.IsAlive = snake.IsSnakeInsideBound();
 
                 Thread.Sleep(300);
             }
-
+            //GAME OVER
         }
     }
 }
