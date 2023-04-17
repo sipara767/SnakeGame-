@@ -54,9 +54,9 @@ namespace SnakeNet6.ViewModel {
                 snake.IsSnakeInsideBound();
                 if (snake.X == food.X && snake.Y == food.Y) {
                     snake.Score++;
-                    food.SetFood(snake);
+                    food.SetFood(snake.X, snake.Y);
                 }
-                snake.IncreaseOrDecreaseXYValues(snake.CurrentDirection);
+                snake.IncreaseOrDecreaseXYValues(snake);
                 evm.ResetEnvironmentMatrixToFalse();
                 evm.PlaceSnakeInEnvironment(snake);
 

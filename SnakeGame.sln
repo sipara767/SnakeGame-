@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnakeNet6", "Snake.NET6\SnakeNet6.csproj", "{C6B7AD52-D662-4C51-AC7B-A51D6B481EA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF", "Snake.NET6\WPF.csproj", "{C6B7AD52-D662-4C51-AC7B-A51D6B481EA8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnakeElement", "SnakeElement\SnakeElement.csproj", "{0791BAED-8775-4B31-B77A-47106861427E}"
 EndProject
