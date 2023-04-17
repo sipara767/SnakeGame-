@@ -15,7 +15,7 @@ using System.ComponentModel;
 using System.Threading;
 using SnakeElement;
 using FoodElement;
-using Environment;
+using EnvironmentElement;
 
 namespace SnakeNet6.ViewModel {
     public class MainViewModel : INotifyPropertyChanged {
@@ -50,11 +50,12 @@ namespace SnakeNet6.ViewModel {
             snake.X = 1;
             snake.Y = 12;
 
+            gameTimer.Start();
             while (snake.IsAlive) {
                 snake.IsSnakeInsideBound();
                 if (snake.X == food.X && snake.Y == food.Y) {
                     snake.Score++;
-                    food.SetFood(snake.X, snake.Y);
+                    food.SetFood();
                 }
                 snake.IncreaseOrDecreaseXYValues(snake);
                 evm.ResetEnvironmentMatrixToFalse();
@@ -64,6 +65,7 @@ namespace SnakeNet6.ViewModel {
                 Thread.Sleep(300);
             }
             //GAME OVER
+            gameTimer.Stop();
         }
     }
 }
