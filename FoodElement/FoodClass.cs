@@ -2,17 +2,25 @@
 
 namespace FoodElement {
     public class FoodClass {
-        private FoodClass food;
+        
         public int X { get; set; }
         public int Y { get; set; }
-        public void SetFood(int x, int y) {
+        public FoodClass(bool[,] gameBord)
+        {
+            GenerateRandomPosition(gameBord)
+        }
+        public void GenerateRandomPosition(bool[,] gameBord)
+        {
             Random rnd = new Random();
-            int newX;
-            int newY;
+            int boardsize = gameBord.GetLength(0)
+            int x;
+            int y;
             do {
-                newX = rnd.Next(25);
-                newY = rnd.Next(25);
-            } while (newX == x && newY == y);
+                X = rnd.Next(boardsize);
+                Y = rnd.Next(boardsize);
+            } while (gameBord[x,y]);
+            X = x;
+            Y = y
         }
     }
 }
